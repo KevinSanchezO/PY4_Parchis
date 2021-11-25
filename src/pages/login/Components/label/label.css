@@ -1,0 +1,10 @@
+.label-container label{
+    color:rgb(197, 236, 19);
+    font-size:xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
