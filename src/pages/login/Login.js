@@ -57,8 +57,7 @@ const Login=()=> {
                
     
                     </Router>
-                   
-              
+
             :
             <div className='login-container'>
             <div className='login-content'>  
