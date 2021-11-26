@@ -1,4 +1,4 @@
-.unirsePartida-container{
+.menuInicio-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,7 +9,7 @@
     background: darkslategrey
     
 }
-.unirsePartida-content{
+.menuInicio-content{
     width: 85%;
     height: 100%;
     display: flex;
@@ -24,7 +24,6 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-
 }
 
 .submit-button{
@@ -37,6 +36,7 @@
     color: white;
     font-size: 14px;
     font-weight: bold;
+    margin-top: 20px;
 }
 .submit-button:hover{
     opacity: 0.6;

@@ -5,7 +5,7 @@ import './CrearPartida.css';
 import Title from "./Components/title/title";
 import Label from "./Components/label/label";
 import Input from "./Components/input/input";
-import CrearPartida from './CrearPartida';
+import MenuInicio from "./MenuInicio";
 const Login=()=> {
     const [user,setUser]= useState('');
     const [isLogin,setIsLogin ]=useState(false);
@@ -55,18 +55,13 @@ const Login=()=> {
     return(
         <div>
                 {isLogin ? 
-               
                     <Router>
-                                <Link exact to="/crear">
-                                    <div>
-                                         <CrearPartida/>
-                                    </div>
-                                    
-                                </Link>
-               
-    
+                            <Link exact to="/inicio">
+                                <div>
+                                     <MenuInicio/>
+                                </div>                    
+                            </Link>
                     </Router>
-
             :
             <div className='login-container'>
                 <div className='login-content'>  
