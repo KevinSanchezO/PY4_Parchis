@@ -22,7 +22,7 @@ const UnirsePartida=( { nombre } )=>{
           {!registrado && (
             <form onSubmit={registrar}>
               <div className = 'title-container-label'>Eliga una partida</div>
-              <textarea className = 'textarea-style'
+              <textarea className = 'textarea-style' disabled
                 name=""
                 id=""
                 cols="80"
