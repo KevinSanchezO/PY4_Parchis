@@ -1,0 +1,74 @@
+.login-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: darkslategrey
+}
+
+.login-content{
+  width: 85%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  position:absolute;
+}
+
+.title-container-label{
+  color:rgb(94, 116, 117);
+  font-size:xx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.submit-button{
+  margin-top: 10px;
+  width: 90%;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: rgb(7,69,71);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input-style{
+  margin-top: 10px;
+  width: 100%;
+  height: 35px;
+  border-radius: 25px;
+  border: none;
+  padding: 0 10px 0 20px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  color:darkslategray;
+  font-size: 14px;
+  outline: none;
+  font-style: italic;
+}
+
+.regular-style::placeholder{
+  font-size: 14px;
+  color: rgb(35, 29, 20);
+  opacity: 0.8;
+}
+
+.textarea-style{
+  font-size: 16px;
+  color: aliceblue;
+  font-weight: bold;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+}
