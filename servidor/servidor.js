@@ -17,6 +17,7 @@ class Sala{
       this.jugador2;
       this.jugador3;
       this.jugador4;
+      this.contador=2;
   }
   getCreador(){
       return this.creador;
@@ -33,10 +34,16 @@ class Sala{
   setJugador2(jugador2){
     this.jugador2=jugador2;
 }
+setContador(){
+  this.contador++;
+}
+getContador(){
+  return this.contador;
+}
 setJugador3(jugador3){
   this.jugador3=jugador3;
 }
-setJugador1(jugador4){
+setJugador4(jugador4){
   this.jugador4=jugador4;
 }
   getJugador1(){
@@ -67,9 +74,13 @@ const io = socketio(servidor);
 let arrayJugadores=[];
 let arraySalas=[];
 
+
+
+
+
 io.on("connection", (socket) => {
   let nombre;
-
+  
   socket.on("conectado", (nomb) => {
     nombre = nomb;
     let i=0;
@@ -91,12 +102,107 @@ io.on("connection", (socket) => {
       i++;
     }
   });
+  function anadirJugador(nick,id){
+    let i=0;
+    let band="";
+    while(i<=arraySalas.length-1){
+      if(arraySalas[i].getIdentificador()===id){
+        if(arraySalas[i].getContador()===2){
+          arraySalas[i].setJugador2(nick);
+          arraySalas[i].setContador();
+          band+="2";
+        }else{
+          if(arraySalas[i].getContador()===3 && arraySalas[i].getCantidad()==="4"){
+            arraySalas[i].setJugador3(nick);
+            arraySalas[i].setContador();
+            band+="2";
+          }else{
+            if(arraySalas[i].getContador()===4 && arraySalas[i].getCantidad()==="4"){
+              arraySalas[i].setJugador4(nick);
+              arraySalas[i].setContador();
+              band+="2";
+            }
+          }
+        }
+      }
+      i++;
+
+    }
+    return band;
+  }
+  
+function stringJugadores(ident){
+    let i=0;
+    let f=0;
+    let j=2;
+    let res="";
+    while(i<=arraySalas.length-1){
+      if(arraySalas[i].getIdentificador()===ident){
+          if(f===0){
+            res+="Creador: "+arraySalas[i].getCreador()+" | Identificador: "+arraySalas[i].getIdentificador()+" | Cantidad: "+arraySalas[i].getCantidad()+"\n";
+            f++;
+          }
+           
+            while(arraySalas[i].getContador()>j){
+              if(j===2){
+                res+="Jugador "+"2: "+arraySalas[i].getJugador2()+ "\n";
+                j++;
+              }else{
+                if(j===3){
+                  res+="Jugador "+"3: "+arraySalas[i].getJugador3()+ "\n";
+                  j++;
+                }else{
+                  if(j===4){
+                    res+="Jugador "+"4: "+arraySalas[i].getJugador4()+ "\n";
+                    j++;
+                  }
+                }
+              }
+               
+            }
+           
+          
+        //}
+      }
+      i++;
+    }
+    
+    return res;
+  }
+
+  socket.on("Anadir jugador",(nick,id)=>{
+    io.emit("Enviar verificasion",anadirJugador(nick,id));
+  });
+
+//unirsePrtida
+socket.on("Enviar jugadores",(id)=>{
+  io.emit("Recibir jugadores",stringJugadores(id));
+});
+
 
   socket.on("Enviar salas", () => {
     console.log("Uniendose");
     io.emit("Recibir salas", crearString());
   })
+socket.on("Enviar id",(id)=>{
+  io.emit("Recibir total",validarCant(id));
+})
 
+  function validarCant(identificador){
+    let res;
+    let i=0;
+    while(i<=arraySalas.length-1){
+      if(arraySalas[i].getIdentificador()===identificador){
+        if(arraySalas[i].getContador()-1===arraySalas[i].getCantidad()){
+          res="1";
+        }else{
+          res="0";
+        }
+      }
+      i++;
+    }
+    return res;
+  }
   function crearString(){
     let res = "";
     let i = 0;

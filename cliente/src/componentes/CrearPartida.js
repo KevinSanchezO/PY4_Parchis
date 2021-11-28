@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import socket from "./Socket";
 import "../App.css";
-
+import SalaEspera from "./SalaEspera";
 
 function makeid() {
   var text = "";
@@ -45,6 +45,7 @@ const CrearPartida=( { nombre } )=>{
               <button className='submit-button'onClick={registrar}>Crear partida</button>
             </form>
           )}
+          {registrado && <SalaEspera identificador={id}/>}
         </div>
     );
 
