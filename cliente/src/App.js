@@ -22,7 +22,6 @@ function App() {
           <button className='submit-button'>Log in</button>
         </form>
       )}
-
       {registrado && <MenuInicio nombre={nombre} />}
     </div>
   );

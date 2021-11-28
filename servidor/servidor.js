@@ -1,4 +1,3 @@
-
 class Jugador{
   constructor (nickname){
       this.nickname=nickname;
@@ -63,6 +62,8 @@ setJugador4(jugador4){
   }
 }
 
+//source: https://github.com/Re-On-Media/reon-media-chat
+//estructura del uso de sockets
 const express = require("express");
 const http = require("http");
 const app = express();
@@ -73,10 +74,6 @@ const io = socketio(servidor);
 
 let arrayJugadores=[];
 let arraySalas=[];
-
-
-
-
 
 io.on("connection", (socket) => {
   let nombre;
@@ -189,19 +186,18 @@ socket.on("Enviar id",(id)=>{
 })
 
   function validarCant(identificador){
-    let res;
     let i=0;
     while(i<=arraySalas.length-1){
       if(arraySalas[i].getIdentificador()===identificador){
-        if(arraySalas[i].getContador()-1===arraySalas[i].getCantidad()){
-          res="1";
+        console.log((arraySalas[i].getContador()-1).toString(), arraySalas[i].getCantidad());
+        if((arraySalas[i].getContador()-1).toString()===arraySalas[i].getCantidad()){
+          return "1";
         }else{
-          res="0";
+          return "0"
         }
       }
       i++;
     }
-    return res;
   }
   function crearString(){
     let res = "";
