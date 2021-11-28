@@ -7,8 +7,8 @@ class Jugador{
       return this.nickname;
   }
 };
-class Sala{
 
+class Sala{
   constructor(creador,cantidad,identificador){
       this.creador=creador;
       this.cantidad=cantidad;
@@ -17,7 +17,6 @@ class Sala{
       this.jugador2;
       this.jugador3;
       this.jugador4;
-
   }
   getCreador(){
       return this.creador;
@@ -71,16 +70,11 @@ let arraySalas=[];
 io.on("connection", (socket) => {
   let nombre;
 
-
   socket.on("conectado", (nomb) => {
     nombre = nomb;
     let i=0;
     let jugador=new Jugador(nombre);
     arrayJugadores.push(jugador);
-
-    /*socket.broadcast.emit("mensajes", {
-      nombre: nombre,
-    });*/
     while(i<=arrayJugadores.length-1){
       console.log("nombre",arrayJugadores[i].getNickname());
       i++;
@@ -93,31 +87,26 @@ io.on("connection", (socket) => {
     sala.setJugador1(creador);
     arraySalas.push(sala);
     while(i<=arraySalas.length-1){
-      
       console.log("Creador: ",arraySalas[i].getCreador(),"Cantidad: " ,arraySalas[i].getCantidad(),"Identificador: ", arraySalas[i].getIdentificador());
       i++;
     }
-    /*socket.broadcast.emit("mensajes", {
-      nombre: nombre,
-    });*/
-    //console.log("nombre",arraySalas[0].getNickname());
   });
 
-  socket.on("prueba", () => {
-    console.log("sigue conectado", nombre)
-  });
+  socket.on("Enviar salas", () => {
+    console.log("Uniendose");
+    io.emit("Recibir salas", crearString());
+  })
 
-  socket.on("mensaje", (nombre, mensaje) => {
-    io.emit("mensajes", { nombre, mensaje });
-  });
+  function crearString(){
+    let res = "";
+    let i = 0;
+    while(i<=arraySalas.length-1){
+      res += "Creador: "+arraySalas[i].getCreador()+" | Identificador: "+arraySalas[i].getIdentificador()+" | Cantidad: "+arraySalas[i].getCantidad()+"\n";
+      i++;
+    }
+    return res;
+  }
 
-
-  socket.on("disconnect", () => {
-    io.emit("mensajes", {
-      servidor: "Servidor",
-      mensaje: `${nombre} ha abandonado la sala`,
-    });
-  });
 });
 
 servidor.listen(5000, () => console.log("Servidor inicializado"));

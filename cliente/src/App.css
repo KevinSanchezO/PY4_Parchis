@@ -63,13 +63,12 @@
   opacity: 0.8;
 }
 
-.textarea-style{
-  font-size: 16px;
-  color: aliceblue;
+.textarea-style::placeholder{
+  font-size: 20px;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-color: transparent;
-  
+  background-color: transparent; 
 }

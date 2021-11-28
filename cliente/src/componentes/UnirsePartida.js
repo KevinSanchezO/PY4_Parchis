@@ -5,10 +5,17 @@ import "../App.css";
 const UnirsePartida=( { nombre } )=>{
   const [registrado, setRegistrado] = useState(false);
   const [codigoPartida, setCodPartida] = useState("");
-    
+  const [infoSalas, setinfoSalas] = useState("");
+
   useEffect(() => {
-    socket.emit("prueba", "es solo una prueba");
-  })
+    socket.emit("Enviar salas", nombre);
+  });
+
+  useEffect(() => {
+    socket.on("Recibir salas", salas => {
+      setinfoSalas(salas);
+    })
+  });
 
   const registrar = (e) => {
     e.preventDefault();
@@ -17,12 +24,16 @@ const UnirsePartida=( { nombre } )=>{
     }
   };
 
+  /*socket.on("Recibir salas", salas => {
+    setinfoSalas(salas);
+  })*/
+
     return (
         <div className="login-container">
           {!registrado && (
             <form onSubmit={registrar}>
               <div className = 'title-container-label'>Eliga una partida</div>
-              <textarea className = 'textarea-style' disabled
+              <textarea placeholder = {infoSalas} className = 'textarea-style' disabled
                 name=""
                 id=""
                 cols="80"

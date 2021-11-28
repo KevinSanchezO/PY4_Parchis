@@ -14,10 +14,6 @@ const Chat = ({ nombre }) => {
     socket.on("mensajes", (mensaje) => {
       setMensajes([...mensajes, mensaje]);
     });
-
-    return () => {
-      socket.off();
-    };
   }, [mensajes]);
 
   const divRef = useRef(null);
