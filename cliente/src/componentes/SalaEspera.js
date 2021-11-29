@@ -3,10 +3,12 @@ import socket from "./Socket";
 import TableroParchis from "./TableroParchis"
 import "../App.css";
 
+//seccion para la sala de espera
 const SalaEspera=({identificador})=>{
     const [registrado, setRegistrado] = useState(false);
     const [infoJugadores, setinfoJugadores] = useState("");
 
+    //recibe los datos de los jugadores que se unen a la sala de espera
     const registrar = (e) => {
         e.preventDefault();
         socket.emit("Enviar id", identificador);
@@ -48,7 +50,7 @@ const SalaEspera=({identificador})=>{
                 <button onClick={registrar} className='submit-button'>A Jugar!!</button>
             </form>
             )}
-            {registrado && <TableroParchis/>}
+            {registrado && <TableroParchis identificador={identificador}/>}
         </div>
     )
 

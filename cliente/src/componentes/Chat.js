@@ -1,3 +1,5 @@
+//source: https://github.com/Re-On-Media/reon-media-chat
+//base del uso de sockets desde el cliente
 import React, { useState, useEffect, useRef } from "react";
 import socket from "./Socket";
 import "../App.css";

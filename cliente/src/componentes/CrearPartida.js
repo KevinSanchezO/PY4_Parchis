@@ -3,6 +3,12 @@ import socket from "./Socket";
 import "../App.css";
 import SalaEspera from "./SalaEspera";
 
+/*
+E:
+S:Un string con un identificador de 5 digitos
+R:
+Creacion de un string identificador de una sala de juego
+*/
 function makeid() {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -12,11 +18,13 @@ function makeid() {
 }
 
 let id=makeid();
+//seccion front-end de la ventana para crear una partida
 const CrearPartida=( { nombre } )=>{
     const [cantidad,setCantidad]= useState("");
     const [registrado, setRegistrado] = useState(false);
     let cant;
-   
+
+    //permite la creacion de una sala verificando si se recibe 2 o 4 como cantidad de jugadores
     const registrar = (e) => {
         e.preventDefault();
         if (cantidad !== "") {

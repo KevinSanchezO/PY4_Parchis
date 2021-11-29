@@ -4,18 +4,22 @@ import "../App.css";
 import CrearPartida from "./CrearPartida";
 import UnirsePartida from "./UnirsePartida";
 
+//menu de inicio
 const MenuInicio = ({ nombre }) => {
     const [crearpartida,setIsCrearPartida]=useState(false);
     const [unirsepartida,setIsUnirsePartida]=useState(false);
 
+    //setea como true la constante crearpartida
     function EventoCrearPartida(){
         setIsCrearPartida(true);
     }
 
+    //setea como true la constante unirsepartida
     function EventoUnirsePartida(){
         setIsUnirsePartida(true);
     }
 
+    //llamada al socket para registrar un usuario
     useEffect(() => {
         socket.emit("conectado", nombre);
     }, [nombre]);

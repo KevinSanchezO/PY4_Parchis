@@ -2,6 +2,8 @@ import React, {useState,useEffect} from "react";
 import socket from "./Socket";
 import "../App.css";
 import SalaEspera from "./SalaEspera";
+
+//ventana para la union a partidas creadas para los usuarios
 const UnirsePartida=( { nombre } )=>{
   const [registrado, setRegistrado] = useState(false);
   const [codigoPartida, setCodPartida] = useState("");
@@ -17,6 +19,8 @@ const UnirsePartida=( { nombre } )=>{
       setinfoSalas(salas);
     })
   });*/
+
+  //permite mostrar las salas de juego disponibles 
   const refrescar=(e)=>{
     e.preventDefault();
     socket.emit("Enviar salas", nombre);
@@ -24,6 +28,8 @@ const UnirsePartida=( { nombre } )=>{
       setinfoSalas(salas);
     });
   }
+
+  //permite la union de un usuario a una sala de juego
   const registrar = (e) => {
     e.preventDefault();
     

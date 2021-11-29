@@ -1,12 +1,71 @@
 /* source code: https://codepen.io/Bunno/pen/EOqjpV 
 Estructura del tablero*/
+import React, { useState,useEffect } from "react";
+import '../App.css'
+import socket from "./Socket";
 
-import React from "react";
-import './TableroParchis.css'
-const TableroParchis =()=>{
+//seccion de juego con el tablero del parchis
+const TableroParchis =( { identificador } )=>{
+    const [jugadores, setJugadores] = useState([]);
+    const [cantidaSala, setCantSala] = useState("");
+
+    //llamada al socket
+    useEffect(() => {
+        socket.emit("Enviar players", identificador);
+    });
+    
+    //llamada al socket para recibir los jugadores del juego
+    useEffect(() => {
+        socket.on("Recibir players", jugadores => {
+          setJugadores(jugadores);
+        })
+    });
+
+    //llamada al socket
+    useEffect(() => {
+        socket.emit("Enviar players cant", identificador);
+    });
+
+    //llamada al socket para recibir la cantidad maxima de jugadores
+    useEffect(() => {
+        socket.on("Recibir players cant", cant => {
+          setCantSala(cant);
+        })
+    });
+
+    //creacion de un string con la cantidad maxima de jugadores
+    function stringCantPlayers () {
+        return "Cantidad: "+cantidaSala;
+    }
+
+    //creacion de un string con el nombre del jugador 1
+    function stringJ1 (){
+        return "Jugador 1. "+ jugadores[0];
+    }
+
+    //creacion de un string con el nombre del jugador 2
+    function stringJ2 (){
+        return "Jugador 2. "+ jugadores[1];
+    }
+
+    //creacion de un string con el nombre del jugador 3
+    function stringJ3 (){
+        return "Jugador 3. "+ jugadores[2];
+    }
+
+    //creacion de un string con el nombre del jugador 4
+    function stringJ4 (){
+        return "Jugador 4. "+ jugadores[3];
+    }
+
     return (
         <div>
-            <h1>Juegito</h1>
+            <h1>{identificador}</h1>
+            <h4>{stringCantPlayers()}</h4>
+            <h4 class = "playerRojo">{stringJ1()}</h4>
+            <h4 class = "playerVerde">{stringJ2()}</h4>
+            <h4 class = "playerAmarillo">{stringJ3()}</h4>
+            <h4 class = "playerAzul">{stringJ4()}</h4>
             <table border="1px">
                 <tr>
                 <td class="amarillo" colspan="7" rowspan="7"></td>

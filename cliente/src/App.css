@@ -1,3 +1,4 @@
+/*establece el estilo de el fondo de la pagina*/
 .login-container{
   display: flex;
   flex-direction: column;
@@ -9,6 +10,7 @@
   background: darkslategrey
 }
 
+/*establece el estilo de los entry en la pagina*/
 .login-content{
   width: 85%;
   height: 100%;
@@ -19,6 +21,7 @@
   position:absolute;
 }
 
+/*establece el estilo de los h1 en la pagina*/
 .title-container-label{
   color:rgb(94, 116, 117);
   font-size:xx-large;
@@ -29,6 +32,7 @@
   font-style: italic;
 }
 
+/*establece el estilo de los botones en la pagina*/
 .submit-button{
   margin-top: 10px;
   width: 90%;
@@ -42,6 +46,7 @@
   font-weight: bold;
 }
 
+/*establece el estilo de las entry en la pagina*/
 .input-style{
   margin-top: 10px;
   width: 100%;
@@ -57,12 +62,14 @@
   font-style: italic;
 }
 
+/*establece el estilo de los placeholders en las entry en la pagina*/
 .regular-style::placeholder{
   font-size: 14px;
   color: rgb(35, 29, 20);
   opacity: 0.8;
 }
 
+/*establece el estilo de las textareas en la pagina*/
 .textarea-style::placeholder{
   font-size: 20px;
   color: rgb(0, 0, 0);
@@ -71,4 +78,64 @@
   margin-left: auto;
   margin-right: auto;
   background-color: transparent; 
+}
+
+/* source code: https://codepen.io/Bunno/pen/EOqjpV 
+estilos en css del tablero*/
+
+/*estilo de las casillas amarillas*/
+.amarillo{
+  background-color: yellow;
+  text-align: center;
+}
+/*estilo de las casillas verdes*/
+.verde{
+  background-color: green;
+  text-align: center;
+}
+/*estilo de las casillas azules*/
+.azul{
+  background-color: royalblue;
+  text-align: center;
+}
+/*estilo de las casillas rojas*/
+.rojo{
+  background-color: red;
+  text-align: center;
+}
+/*estilo de las casillas blancas*/
+.blanco{
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  height: 100%;  
+}
+/*estilo de las casillas vacias*/
+#vacio{
+  background-color: white;
+}
+/*estilo de las imagenes*/
+img{
+  width: 200px;
+  height: 200px;
+}
+
+/*estilo del texto del jugador rojo*/
+.playerRojo{
+  color: red;
+}
+
+/*estilo del texto del jugador azules*/
+.playerAzul{
+  color: royalblue;
+}
+
+/*estilo del texto del jugador verde*/
+.playerVerde{
+  color: green;
+}
+
+/*estilo del texto del jugador amarillo*/
+.playerAmarillo{
+  color: yellow;
 }
