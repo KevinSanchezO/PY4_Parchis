@@ -107,8 +107,8 @@ estilos en css del tablero*/
 .blanco{
   background-color: white;
   text-align: center;
-  width: 100%;
-  height: 100%;  
+  /*width: 100%;
+  height: 100%;*/
 }
 /*estilo de las casillas vacias*/
 #vacio{
@@ -123,19 +123,27 @@ img{
 /*estilo del texto del jugador rojo*/
 .playerRojo{
   color: red;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /*estilo del texto del jugador azules*/
 .playerAzul{
   color: royalblue;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /*estilo del texto del jugador verde*/
 .playerVerde{
   color: green;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /*estilo del texto del jugador amarillo*/
 .playerAmarillo{
   color: yellow;
+  font-size: 20px;
+  font-weight: bold;
 }

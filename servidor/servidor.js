@@ -25,7 +25,7 @@ Clase Sala
     jugador3 = nickname del jugador 3
     jugador4 = nickname del jugador 4
   Metodos:
-    getters y getters
+    setters y getters
 */
 class Sala{
   constructor(creador,cantidad,identificador){
